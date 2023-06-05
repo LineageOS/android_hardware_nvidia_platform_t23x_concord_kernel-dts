@@ -43,17 +43,11 @@
 	firmware {
 		android {
 			compatible = "android,firmware";
-			first_stage_delay = "1";
-			system_root_blkdev = "/dev/mmcblk0p1";
-			fstab {
-				compatible = "android,fstab";
-				vendor {
-					compatible = "android,vendor";
-					dev = "/dev/block/platform/3460000.sdhci/by-name/vendor";
-					type = "ext4";
-					mnt_flags = "ro,noatime";
-					fsmgr_flags = "wait";
-				};
+			hardware = "concord";
+			boot_devices = "141a0000.pcie,3400000.sdhci,3460000.sdhci";
+			vbmeta {
+				compatible = "android,vbmeta";
+				parts = "vbmeta,boot,kernel-dtb,vbmeta_system,recovery";
 			};
 		};
 	};
